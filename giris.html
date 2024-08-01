@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+    <meta charset="utf-8">
+
+      <style>
+         body { 
+           background-image: url('gorsel/welcome.jpg');
+           background-size: cover;
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+
+         }
+      </style>
+<style>
+  body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:90vh;
+      margin:0;
+
+  }
+  .orta{
+      text-align:center;
+  }
+  table{
+    color:tomato;
+  }
+  h2{
+    color:olive;
+  }
+</style>
+
+    </head>
+    <body>
+      <div class="orta">
+        <form>
+            <p><h2>SİTEYE GİRİŞ EKRANI</h2></p>
+            <table>
+           <tr><td> Ad:</td><td><input type="text" id="ad" oninput="validedateAd(this)"></td></tr><br>
+           <tr><td> Soyad:</td><td><input type="text" id="soyad" oninput="validateSoyad(this)"></td></tr><br>
+           <tr><td>Email:</td><td><input type="text" id="email" onblur="validateEmail(this)"></td></tr><br>
+        </table>
+           <tr><td><input type="button" value="giriş" onclick="giriş()"></td></tr>
+           <tr><td><input type="button" value="sil" onclick="sil()"></td></tr>
+          
+        </form>
+      </div>
+          <script>
+           
+              function giriş(){
+              var ad = document.getElementById("ad").value.trim();
+              var soyad = document.getElementById("soyad").value.trim();
+              var email = document.getElementById("email").value;
+
+              if (ad === ""|| soyad === ""){
+                alert(" Lütfen ad ve soyad alanlarını doldurunuz.");
+              }else if (email.indexOf('@')=== -1){
+                alert("Lütfen geçerli bir e-posta adresi giriniz.");
+
+              }else {
+                var twopageeURL="twopagee.html";
+                window.location.href=twopageeURL;
+
+              }
+
+             }
+             
+             
+             function sil(){
+             alert("silme işlemi gerçekleştirildi")
+              var ad = document.getElementById("ad");
+             var soyad = document.getElementById("soyad");
+             var email = document.getElementById("email");
+             ad.value= "";
+             soyad.value= "";
+             email.value= "";  
+             }
+             function validedateAd(input){
+              var ad = input.value;
+              if (/[^a-zA-Z]/.test(ad)) {
+                alert("Ad bölümü sadece harf içermelidir lütfen tekrar giriniz!");
+                input.value = "";
+              }
+             }
+             function validedateSoyad(input){
+              var ad = input.value;
+              if (/[^a-zA-Z]/.test(soyad)) {
+                alert("Soyad bölümü sadece harf içermelidir lütfen tekrar giriniz!");
+                input.value = "";
+              }
+              }
+              function validateEmail(input){
+                var email = input.value;
+                if (email.indexOf('@')=== -1){
+                  alert("Lütfen geçerli bir e-posta adresi giriniz!")
+                }
+              }
+             
+             
+
+    </script>
+    </body>
+</html>
